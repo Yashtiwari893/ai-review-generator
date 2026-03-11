@@ -1,0 +1,76 @@
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+    border-left: 4px solid #00dfd8;
+}
+
+.card h3 {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+    color: #00dfd8;
+}
+
+.reviewText {
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.copyBtn,
+.linkBtn {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s;
+}
+
+.copyBtn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.copyBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.linkBtn {
+    background: #00dfd8;
+    color: #000;
+    border: none;
+}
+
+.linkBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 223, 216, 0.3);
+}
+
+.hint {
+    font-size: 10px;
+    opacity: 0.6;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Sentiment variants */
+.positive {
+    border-left-color: #00dfd8;
+}
+
+.neutral {
+    border-left-color: #ffaa00;
+}
+
+.negative {
+    border-left-color: #ff4444;
+}
