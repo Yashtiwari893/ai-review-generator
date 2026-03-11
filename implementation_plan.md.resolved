@@ -1,0 +1,72 @@
+# AI-Powered Review Generator Chatbot - Implementation Plan
+
+## 1. Project Overview
+A Next.js application that provides a chatbot interface for generating professional Google reviews based on user feedback.
+
+### Features
+- **Keyword Trigger**: Starts the conversation (e.g., "denishbhai").
+- **Greeting & Context**: Welcome message with clear instructions.
+- **Dynamic Feedback Form**: Multi-field form (Name, Service, Rating, Comments).
+- **AI Review Generation**: Uses an LLM (Groq/Mistral) to craft a professional review.
+- **Sentiment Adaptation**: Review tone changes based on the user's rating/feedback.
+- **Copy-to-Clipboard**: Direct action for the user to copy the review.
+- **Direct Link**: Quick access to the Google Review page.
+
+## 2. Technical Stack
+- **Framework**: Next.js 15+ (App Router, TypeScript)
+- **Styling**: Vanilla CSS (Premium, Glassmorphism, Modern Aesthetics)
+- **AI API**: Groq (Llama-3/Mistral) for fast and reliable generation
+- **State Management**: React Hooks (useState, useReducer)
+- **Deployment**: Vercel ready
+
+## 3. System Architecture
+```mermaid
+graph TD
+    A[User Sends Keyword] --> B[Bot Greeting]
+    B --> C[Show Feedback Form]
+    C --> D[User Submits Form]
+    D --> E[Next.js API Route /api/generate-review]
+    E --> F[AI API - Groq/Mistral]
+    F --> G[Generate Structured Review]
+    G --> H[Display Review in Chat]
+    H --> I[User Action: Copy & Open Google Review Link]
+```
+
+## 4. Folder Structure
+```
+/src
+  /app
+    /api
+      /generate-review
+        route.ts       # AI logic
+    /components
+      Chatbot.tsx      # Main Chat container
+      Message.tsx      # Chat bubbles
+      FeedbackForm.tsx # Feedback collection
+      ReviewCard.tsx   # Generated review display
+    page.tsx           # Home entry point
+    layout.tsx         # Global wrap
+  /styles
+    globals.css        # Global CSS Reset
+    chatbot.css        # Premium styling
+  /lib
+    ai-client.ts       # AI SDK initialization
+    prompts.ts         # System prompts
+```
+
+## 5. Implementation Steps
+1. **Scaffolding**: Initialize Next.js project.
+2. **Library Setup**: Install `groq-sdk` or `openai` for AI calls.
+3. **API Logic**: 
+   - Create `/api/generate-review`.
+   - Implement Prompt Engineering logic (Sentiment-based).
+4. **UI Foundation**: 
+   - Define CSS tokens (Gradients, Glassmorphism).
+   - Create Chatbot layout.
+5. **Interactive Flow**:
+   - Keyword detection.
+   - Form handling.
+   - API integration.
+6. **Polish**:
+   - Add micro-animations (Framer Motion or CSS).
+   - Responsive design.
