@@ -50,7 +50,23 @@ export default function Chatbot() {
 
     const handleFormSubmit = async (formData: any) => {
         setIsLoading(true);
+        const rating = Number(formData.star_rating);
+
         try {
+            // Case 1: Low Rating (1 or 2 stars) - No AI generation needed for Google Review
+            if (rating <= 2) {
+                setMessages(prev => [...prev,
+                {
+                    role: "bot",
+                    type: "text",
+                    content: `Thank you for your honest feedback, ${formData.Your_Name_4b003f || "Customer"}. We sincerely apologize that your experience with our equipment wasn't up to the mark. We take this very seriously and our support team will contact you shortly to resolve any issues.`
+                }
+                ]);
+                setIsLoading(false);
+                return;
+            }
+
+            // Case 2: Good Rating (3-5 stars) - Proceed with AI Generation
             const response = await fetch("/api/generate-review", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -61,7 +77,7 @@ export default function Chatbot() {
             if (data.error) throw new Error(data.error);
 
             setMessages(prev => [...prev,
-            { role: "bot", type: "text", content: "Here is your professional review based on your feedback:" },
+            { role: "bot", type: "text", content: "Thank you for your great rating! We appreciate your support. Here is a professional review we've drafted for you:" },
             { role: "bot", type: "result", data }
             ]);
         } catch (err) {
